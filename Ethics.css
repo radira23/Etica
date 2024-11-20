@@ -1,0 +1,55 @@
+body {
+    font-family: Arial, sans-serif;
+    text-align: center;
+}
+
+.scenario-tombola {
+    margin: 20px;
+    text-align: center;
+}
+
+.scenario-display {
+    margin-top: 15px;
+    padding: 15px;
+    background-color: #f0f8ff;
+    border: 2px dashed #007bff;
+    border-radius: 8px;
+    min-height: 50px;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.column {
+    width: 400px;
+    height: 600px; /* Aumenta esta altura según sea necesario */
+    border: 2px dashed #333;
+    padding: 10px;
+    margin: 10px;
+    overflow-y: auto; /* Permite scroll si hay muchos elementos */
+}
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    margin-left: 20px; 
+}
+
+.buttons button {
+    margin-bottom: 10px;
+    padding: 10px;
+}
+
+/* Estilo de los escenarios individuales */
+.scenarios p {
+    display: none; /* Oculta los elementos inicialmente */
+    cursor: grab;
+    margin: 10px 0;
+    padding: 5px;
+    background-color: #f2f2f2;
+    border: 1px solid #ddd;
+}
+

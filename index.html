@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Actividad de Ética - Drag and Drop</title>
+    <link rel="stylesheet" href="Ethics.css">
+</head>
+<body>
+    <h1>Clasifica los escenarios en éticos o no éticos</h1>
+    <h2>Lee cada Regla del Instituto de Ética y escenario. Arrastra el escenario a la pantalla de computadora que consideres ética o no ética, según la información proporcionada.</h2>
+
+    <!-- Tómbola de Escenarios -->
+    <div class="scenario-tombola">
+        <button onclick="getNextScenario()">Obtener Escenario</button>
+        <div id="currentScenario" class="scenario-display"></div>
+    </div>
+
+    <div class="container">
+        <div class="column" id="ethical" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Escenarios Éticos</h2>
+        </div>
+        <div class="column" id="unethical" ondrop="drop(event)" ondragover="allowDrop(event)">
+            <h2>Escenarios No Éticos</h2>
+        </div>
+        <div class="buttons">
+            <button onclick="checkClassification()">Verificar Clasificación</button>
+            <button onclick="resetScenarios()">Limpiar Escenarios</button>
+        </div>
+    </div>
+
+    <div class="scenarios">
+        <p id="scenario1" draggable="true" ondragstart="drag(event)">Chris publicó un momento embarazoso de su amigo en redes sociales.</p>
+        <p id="scenario2" draggable="true" ondragstart="drag(event)">Jane cerró la sesión del usuario anterior en la computadora pública.</p>
+        <p id="scenario3" draggable="true" ondragstart="drag(event)">Para gastar una broma a su compañero de trabajo, Jeremy creó un programa que, al ejecutarse, abriría páginas web aleatorias cada dos minutos.</p>
+        <p id="scenario4" draggable="true" ondragstart="drag(event)">La amiga de Michelle trabaja en diseño gráfico. Como regalo de cumpleaños sorpresa, Michelle compró un software de edición de imágenes e instaló el programa en la computadora de su amiga.</p>
+        <p id="scenario5" draggable="true" ondragstart="drag(event)">Durante una investigación de fraude, el FBI obtuvo una orden judicial que les permitió revisar el disco duro de un sospechoso en busca de evidencia.</p>
+        <p id="scenario6" draggable="true" ondragstart="drag(event)">Elise decidió instalar un programa para rastrear los datos de navegación en las computadoras familiares para encontrar el regalo perfecto.</p>
+        <p id="scenario7" draggable="true" ondragstart="drag(event)"> Al encontrar una vulnerabilidad en el sistema de seguridad de un banco que podría darle acceso a cuentas ajenas, Marcus informó la falla al banco para que pudiera corregirla.</p>
+        <p id="scenario8" draggable="true" ondragstart="drag(event)"> Usando una vulnerabilidad en un popular servicio de compras en línea, James logró acceder a los perfiles de otros usuarios y usar sus descuentos para hacer compras.</p>
+        <p id="scenario9" draggable="true" ondragstart="drag(event)">Durante las campañas electorales, es común que se publiquen y compartan en redes sociales artículos engañosos sobre los candidatos.</p>
+        <p id="scenario10" draggable="true" ondragstart="drag(event)">Jasmine trabaja en un sitio de noticias local. Después de recibir información sobre el uso de fondos por parte del alcalde, verificó sus fuentes antes de publicar el artículo.</p>
+        <p id="scenario11" draggable="true" ondragstart="drag(event)"> Para una clase universitaria, Elizabeth encontró y descargó en PDF uno de los libros de texto que necesitaba.</p>
+        <p id="scenario12" draggable="true" ondragstart="drag(event)">Para ahorrar dinero después de construir una nueva computadora, Airam descargó un sistema operativo de código abierto que encontró en línea.</p>
+        <p id="scenario13" draggable="true" ondragstart="drag(event)">Jin pidió a la comunidad de un popular juego acceso a sus máquinas. Con los recursos adicionales, estabilizó el servidor que creó para el juego que todos jugaban.</p>
+        <p id="scenario14" draggable="true" ondragstart="drag(event)">Para minar Bitcoin, Felicia adjuntó un programa que le daba acceso a las GPUs de los usuarios que descargaban sus torrents.</p>
+        <p id="scenario15" draggable="true" ondragstart="drag(event)"> Usando una VPN, Roy cambió la ubicación de su computadora en EE. UU. a un servidor ruso para descargar las últimas películas.</p>
+        <p id="scenario16" draggable="true" ondragstart="drag(event)">Durante la cuarentena, Makayla usó su VPN para cambiar su ubicación a un servidor europeo y así poder ver su serie favorita en Netflix.</p>
+        <p id="scenario17" draggable="true" ondragstart="drag(event)">Jackson creó un programa que detectaría trampas en juegos en línea y automáticamente expulsaría al jugador que estuviera haciendo trampa. Al darse cuenta del impacto potencial, decidió no publicarlo.</p>
+        <p id="scenario18" draggable="true" ondragstart="drag(event)">Jora creó un programa que causaría retraso en la conexión de sus oponentes si estos tomaban la delantera en un juego en línea. Lo publicó en su sitio web personal por una tarifa.</p>
+        <p id="scenario19" draggable="true" ondragstart="drag(event)">Moira mantiene un sitio web de inspiración. Publica citas y artículos para motivar e inspirar a las personas diariamente.</p>
+        <p id="scenario20" draggable="true" ondragstart="drag(event)">Glenn mantiene un sitio de chismes de un pueblo pequeño. Cada día publica rumores sobre los residentes y servicios del pueblo.</p>
+    </div>
+
+    <script src="Ethics.js"></script>
+</body>
+</html>
