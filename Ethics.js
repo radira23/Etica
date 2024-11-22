@@ -22,7 +22,21 @@ const correctClassification = {
     scenario20: "unethical"
 };
 
-// Permitir que los elementos se arrastren y se suelten en el contenedor
+// Función para manejar el envío del formulario
+function submitInfo(event) {
+    event.preventDefault(); // Prevenir recarga de página
+
+    const studentName = document.getElementById('student-name').value;
+    const studentGroup = document.getElementById('student-group').value;
+
+    const greeting = document.getElementById('greeting');
+    greeting.textContent = `¡Hola, ${studentName} del grupo ${studentGroup}! Bienvenido a la actividad.`;
+
+    // Ocultar formulario después de enviar
+    document.getElementById('student-info').style.display = 'none';
+}
+
+// Funciones de arrastrar y soltar
 function allowDrop(event) {
     event.preventDefault();
 }
@@ -33,43 +47,38 @@ function drag(event) {
 
 function drop(event) {
     event.preventDefault();
-    var data = event.dataTransfer.getData("text");
+    const data = event.dataTransfer.getData("text");
     event.target.appendChild(document.getElementById(data));
 }
 
 // Función para verificar si los elementos están en el contenedor correcto
 function checkClassification() {
     let correct = true;
-    
-    // Obtener los elementos en el contenedor de escenarios éticos
+
     const ethicalContainer = document.getElementById("ethical");
     const ethicalItems = ethicalContainer.getElementsByTagName("p");
 
-    // Verificar que los elementos en el contenedor de escenarios éticos tengan ID impar
     for (let item of ethicalItems) {
-        if (parseInt(item.id.replace("scenario", "")) % 2 === 0) {
-            item.style.backgroundColor = "red"; // Marcar incorrecto
+        if (correctClassification[item.id] !== "ethical") {
+            item.style.backgroundColor = "red";
             correct = false;
         } else {
-            item.style.backgroundColor = "lightgreen"; // Marcar correcto
+            item.style.backgroundColor = "lightgreen";
         }
     }
 
-    // Obtener los elementos en el contenedor de escenarios no éticos
     const unethicalContainer = document.getElementById("unethical");
     const unethicalItems = unethicalContainer.getElementsByTagName("p");
 
-    // Verificar que los elementos en el contenedor de escenarios no éticos tengan ID par
     for (let item of unethicalItems) {
-        if (parseInt(item.id.replace("scenario", "")) % 2 !== 0) {
-            item.style.backgroundColor = "red"; // Marcar incorrecto
+        if (correctClassification[item.id] !== "unethical") {
+            item.style.backgroundColor = "red";
             correct = false;
         } else {
-            item.style.backgroundColor = "lightgreen"; // Marcar correcto
+            item.style.backgroundColor = "lightgreen";
         }
     }
 
-    // Mostrar mensaje de verificación
     if (correct) {
         alert("¡Todos los escenarios están correctamente clasificados!");
     } else {
@@ -81,37 +90,34 @@ function checkClassification() {
 function resetScenarios() {
     const scenariosContainer = document.querySelector(".scenarios");
 
-    // Mover todos los elementos de vuelta al contenedor original
     const items = document.querySelectorAll(".scenarios p, #ethical p, #unethical p");
     items.forEach(item => {
-        item.style.backgroundColor = ""; // Restaurar color de fondo
-        scenariosContainer.appendChild(item); // Mover al contenedor original
-        item.style.display = "none"; // Ocultar los elementos nuevamente
+        item.style.backgroundColor = "";
+        scenariosContainer.appendChild(item);
+        item.style.display = "block";
     });
-    document.getElementById("currentScenario").innerHTML = ""; // Limpiar el área de visualización
-    currentScenario = null;
+
+    document.getElementById("currentScenario").innerHTML = "";
 }
 
-// Nueva función para obtener un escenario aleatorio
+// Función para obtener un escenario aleatorio
 let scenarios = Array.from(document.querySelectorAll('.scenarios p'));
 let currentScenario = null;
 
 function getNextScenario() {
-    // Si hay un escenario actualmente seleccionado y ya fue movido, mantenerlo en su lugar
     if (currentScenario && (currentScenario.parentElement.id === 'ethical' || currentScenario.parentElement.id === 'unethical')) {
         currentScenario = null;
     }
 
-    // Obtener un escenario aleatorio que aún esté en el contenedor original
     const remainingScenarios = scenarios.filter(scenario => scenario.parentElement.className === 'scenarios');
 
     if (remainingScenarios.length === 0) {
         alert("¡Todos los escenarios ya han sido clasificados!");
         return;
     }
-    
+
     currentScenario = remainingScenarios[Math.floor(Math.random() * remainingScenarios.length)];
-    currentScenario.style.display = 'block'; // Mostrar el escenario seleccionado
+    currentScenario.style.display = 'block';
     document.getElementById('currentScenario').appendChild(currentScenario);
-    currentScenario.style.backgroundColor = ''; // Restablece el fondo
+    currentScenario.style.backgroundColor = '';
 }
