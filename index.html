@@ -7,8 +7,23 @@
     <link rel="stylesheet" href="Ethics.css">
 </head>
 <body>
+
+    <!-- Formulario para ingresar el nombre y grupo del estudiante -->
+    <form id="student-info" onsubmit="submitInfo(event)">
+        <label for="student-name">Nombre del estudiante:</label>
+        <input type="text" id="student-name" name="student-name" required>
+        
+        <label for="student-group">Grupo:</label>
+        <input type="text" id="student-group" name="student-group" required>
+        
+        <button type="submit">Oprime</button>
+    </form>
+    
+    <!-- Saludo personalizado -->
+    <h2 id="greeting"></h2>
+
     <h1>Clasifica los escenarios en éticos o no éticos</h1>
-    <h2>Lee cada Regla del Instituto de Ética y escenario. Arrastra el escenario a la pantalla de computadora que consideres ética o no ética, según la información proporcionada.</h2>
+    <h2>Lee cada Regla del Instituto de Ética y escenario. Arrastra el escenario hacia la caja que consideres ética o no ética.</h2>
 
     <!-- Tómbola de Escenarios -->
     <div class="scenario-tombola">
@@ -16,6 +31,7 @@
         <div id="currentScenario" class="scenario-display"></div>
     </div>
 
+    <!-- Contenedores para clasificar escenarios -->
     <div class="container">
         <div class="column" id="ethical" ondrop="drop(event)" ondragover="allowDrop(event)">
             <h2>Escenarios Éticos</h2>
@@ -27,6 +43,9 @@
             <button onclick="checkClassification()">Verificar Clasificación</button>
             <button onclick="resetScenarios()">Limpiar Escenarios</button>
         </div>
+    </div>
+
+    
     </div>
 
     <div class="scenarios">
